@@ -1,6 +1,6 @@
 # 📚 Programación UTN – Ejercicios y Actividades
 
-Este repositorio contiene todas las actividades y ejercicios prácticos de la cátedra de **Programación** de la UTN – Facultad Regional Resistencia.  
+Este repositorio contiene todas las actividades y ejercicios prácticos de la cátedra de **Programación IV** de la UTN – Facultad Regional Resistencia.  
 La materia se dicta en dos lenguajes principales: **Python** y **JavaScript**.
 
 ---
