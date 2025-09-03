@@ -33,6 +33,6 @@ Cada carpeta contiene los ejercicios organizados por número de actividad o tema
 
 ## 📖 Autor
 
-**Ariel** – Estudiante de la UTN – Facultad Regional Resistencia.  
+**Ayala, Ramón Ariel** – Estudiante de la UTN – Facultad Regional Resistencia.  
 Carrera: *Técnico Universitario en Programación*.  
 
