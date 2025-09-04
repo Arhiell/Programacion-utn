@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "nombre": "Laptop Gamer X",
+        "precio": "1500.75",
+        "lista": "Ariel"
+    },
+    {
+        "id": "2",
+        "nombre": "Teclado Mecanico RGB",
+        "precio": "120.50",
+        "lista": "Ariel"
+    },
+    {
+        "id": "3",
+        "nombre": "Mouse Inalambrico Pro",
+        "precio": "85.00",
+        "lista": "Ariel"
+    },
+    {
+        "id": "4",
+        "nombre": "Monitor Curvo 27\u00a0pulgadas",
+        "precio": "450.99",
+        "lista": "Ariel"
+    }
+]
