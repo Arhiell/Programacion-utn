@@ -1,0 +1,37 @@
+<!-- api/templates/api/productos_firebase.html -->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Productos desde Firebase</title>
+  </head>
+  <body>
+    <h1>Listado de Productos (Fuente: {{ fuente }})</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID (Firebase Key)</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Categoría</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+        <tr>
+          <td>{{ producto.id }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>${{ producto.precio }}</td>
+          <td>{{ producto.stock }} unidades</td>
+          <td>{{ producto.categoria }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5">No hay productos en la base de datos de Firebase.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
