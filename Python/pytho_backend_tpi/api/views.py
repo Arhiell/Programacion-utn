@@ -1,46 +1,30 @@
-from django.http import JsonResponse
-import csv
-import json
-# Create your views here.
-def saludar(request):
-    """
-    Esta vista devuelve un saludo en formato JSON.
-    """
-    data = {
-        'mensaje': '¡Hola, mundo desde la API de Django!',
-        'curso': 'Programación IV'
-    }
-    return JsonResponse(data)
-
-# Segundo Parte del Ejercicio
-def saludo_personalizado(request, nombre):
-    """
-    Esta vista devuelve un saludo personalizado usando un parámetro de la URL.
-    """
-    # Capitalizamos el nombre para que se vea mejor
-    data = {
-        'mensaje': f'¡Hola, {nombre.capitalize()}! Bienvenido a Programación IV.'
-    }
-    return JsonResponse(data)
-
-# Tercer Parte del Ejercicio
-def procesar_lista_productos(request, nombre_lista):
-    productos_procesados = []
-    ruta_csv = './api/productos.csv'
-    try:
-        with open(ruta_csv, mode='r', encoding='utf-8') as csv_file:
-            csv_reader = csv.DictReader(csv_file)
-            for fila in csv_reader:
-                fila['lista'] = nombre_lista
-                productos_procesados.append(fila)
-        ruta_json = f'./api/{nombre_lista}.json'
-        with open(ruta_json, mode='w', encoding='utf-8') as json_file:
-            json.dump(productos_procesados, json_file, indent=4)
-        return JsonResponse(productos_procesados, safe=False, status=200)
-    except FileNotFoundError:
-        return JsonResponse(
-            {'error': 'El archivo no existe. Llame al Administrador (Codigo (505))'},
-            status=404
-        )
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=500)
+from django.shortcuts import render 
+from firebase_admin import db # ¡Importamos el módulo de base de datos de Firebase! 
+# ... (otras importaciones y vistas) ... 
+ 
+def listar_productos_firebase(request): 
+    """ 
+    Esta vista extrae todos los productos de un nodo en Firebase Realtime Database 
+    y los muestra en una página web. 
+    """ 
+    # 1. Obtenemos una referencia al nodo 'productos' en nuestra base de datos 
+    ref = db.reference('productos') 
+ 
+    # 2. Obtenemos los datos. .get() lee los datos una vez. 
+    firebase_productos = ref.get() 
+ 
+    # 3. Firebase devuelve un diccionario. Lo convertimos a una lista 
+    #    para que sea más fácil de usar en la plantilla. 
+    lista_productos = [] 
+    if firebase_productos: 
+        for key, value in firebase_productos.items(): 
+            producto = value 
+            producto['id'] = key # Agregamos el ID único de Firebase al diccionario 
+            lista_productos.append(producto) 
+ 
+    contexto = { 
+        'productos': lista_productos, 
+        'fuente': 'Firebase Realtime Database' 
+    } 
+ 
+    return render(request, 'api/productos_firebase.html', contexto)
