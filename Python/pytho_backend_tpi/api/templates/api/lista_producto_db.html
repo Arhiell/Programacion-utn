@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listado de Productos desde DB</title>
+  </head>
+  <body>
+    <h1>Listado de Productos desde MySQL</h1>
+    <a href="{% url 'crear_producto' %}">Añadir nuevo producto</a>
+    <hr />
+
+    <h3>Ordenar por:</h3>
+    <a href="?ordenar=nombre">Nombre (A-Z)</a> |
+    <a href="?ordenar=precio">Precio (- & +)</a> |
+    <a href="?ordenar=stock">Stock (- & +)</a> |
+    <a href="?ordenar=categoria">Categoría (A-Z)</a>
+
+    <hr />
+    {% if productos %}
+    <table border="1" style="width: 100%; border-collapse: collapse">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Categoría</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+        <tr>
+          <td>{{ producto.nombre }}</td>
+          <td>${{ producto.precio }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>{{ producto.categoria.nombre }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No hay productos en la base de datos. ¡Añade uno!</p>
+    {% endif %}
+  </body>
+</html>

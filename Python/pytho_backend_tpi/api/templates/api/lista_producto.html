@@ -1,0 +1,40 @@
+<!-- Declaración básica de un documento HTML5 -->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Codificación de caracteres para soportar acentos y ñ -->
+    <meta charset="UTF-8" />
+    <!-- El título que se muestra en la pestaña del navegador. Usa una variable de Django. -->
+    <title>Lista: {{ nombre_lista }}</title>
+  </head>
+  <body>
+    <!-- Título principal de la página. También usa una variable de Django. -->
+    <h1>Lista de Productos: "{{ nombre_lista }}"</h1>
+
+    <!-- Creamos una tabla. El atributo 'border="1"' es una forma simple (aunque antigua) de hacer visibles los bordes sin usar CSS. -->
+    <table border="1">
+      <!-- Cabecera de la tabla -->
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+
+      <!-- Cuerpo de la tabla donde irán los datos -->
+      <tbody>
+        <!-- Bucle de Django: Esto se repetirá por cada producto en la lista que pasamos desde la vista. -->
+        {% for producto in productos %}
+        <tr>
+          <!-- Imprimimos los datos de cada producto en su celda correspondiente. -->
+          <td>{{ producto.id }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>${{ producto.precio }}</td>
+        </tr>
+        <!-- Aquí termina la repetición del bucle. -->
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Crear Nuevo Producto</title>
+  </head>
+  <body>
+    <h1>Añadir un Nuevo Producto</h1>
+
+    <!-- Formulario para crear un producto -->
+    <form action="" method="post">
+      {% csrf_token %}
+
+      <!-- Nombre del producto -->
+      <p>
+        <label for="nombre">Nombre:</label><br />
+        <input type="text" id="nombre" name="nombre_producto" required />
+      </p>
+
+      <!-- Precio del producto -->
+      <p>
+        <label for="precio">Precio:</label><br />
+        <input
+          type="number"
+          step="0.01"
+          id="precio"
+          name="precio_producto"
+          required
+        />
+      </p>
+
+      <!-- Stock disponible -->
+      <p>
+        <label for="stock">Stock:</label><br />
+        <input type="number" id="stock" name="stock_producto" required />
+      </p>
+
+      <!-- Botón para enviar el formulario -->
+      <button type="submit">Guardar Producto</button>
+    </form>
+  </body>
+</html>
