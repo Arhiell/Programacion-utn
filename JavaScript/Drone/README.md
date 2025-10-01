@@ -7,7 +7,7 @@ El objetivo principal es calcular:
 - ✅ Cuántas manzanas maduras logra cosechar el dron.
 - ❌ Cuántas manzanas podridas hay en el campo.
 - 🍏 Cuántas manzanas inmaduras hay en el campo.
-- ⚡ El tiempo total necesario para completar el recorrido, considerando la energía disponible del dron.
+- ⚡ El tiempo total necesario para completar el recorrido, considerando la energía disponible del dronee.
 
 ---
 
